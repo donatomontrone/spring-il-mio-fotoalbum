@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+	<header>
+		<div th:replace="~{fragments/header :: header}">
+		</div>
+	</header>
+	<main th:object="${photo}">
+		<div class="container">
+			<div class="row">
+				<h3>Modifica foto [[*{#strings.toLowerCase(title)}]]</h3>
+			</div>
+<form class="row g-3" method="POST">
+
+				<div class="col-md-6">
+					<label for="photoTitle" class="form-label">Titolo della foto</label>
+					<input type="text" th:class="${(errors != null && errors.hasFieldErrors('title')) ? 'is-invalid' : ''} + ' form-control'" id="photoTitle" name="title" th:value="*{title}">
+					<div class="invalid-feedback"
+						th:if="${errors != null && errors.hasFieldErrors('title')}">
+						[[ ${errors.getFieldError('title').getDefaultMessage()} ]]
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="url" class="form-label">Url dell'immagine</label>
+					<input type="text" th:class="${(errors != null && errors.hasFieldErrors('url')) ? 'is-invalid' : ''} + ' form-control'" id="url" name="url" th:value="*{url}">
+					<div class="invalid-feedback"
+						th:if="${errors != null && errors.hasFieldErrors('url')}">
+						[[ ${errors.getFieldError('imgPath').getDefaultMessage()} ]]
+					</div>
+				</div>
+				<div class="col-md-8">
+					<label for="description" class="form-label">Descrizione</label>
+					<textarea th:class="${(errors != null && errors.hasFieldErrors('description')) ? 'is-invalid' : ''} + ' form-control'" id="description" rows="1"
+						name="description">[[*{description}]]</textarea>
+					<div class="invalid-feedback"
+						th:if="${errors != null && errors.hasFieldErrors('description')}">
+						[[ ${errors.getFieldError('description').getDefaultMessage()} ]]
+					</div>
+				</div>
+				<div class="col-md-4">
+					<p>Visibile:</p>
+					<div class="form-check">
+						<input type="radio" th:class="${(errors != null && errors.hasFieldErrors('price')) ? 'is-invalid' : ''} + ' form-check-input'"
+							id="visible" name="visible" value="1" th:checked="*{visible == true}">>
+						<label class="form-check-label" for="visible">Sì</label>
+					</div>
+					<div class="form-check mb-3">
+						<input type="radio" th:class="${(errors != null && errors.hasFieldErrors('price')) ? 'is-invalid' : ''} + ' form-check-input'"
+							id="visible" name="visible" value="0" th:checked="*{visible == false}">
+						<label class="form-check-label" for="visible">No</label>
+						<div class="invalid-feedback"
+							th:if="${errors != null && errors.hasFieldErrors('visible')}">
+							[[ ${errors.getFieldError('visible').getDefaultMessage()} ]]</div>
+					</div>
+				</div>
+					<button type="submit">Invia</button>
+			</form>
+		</div>
+	</main>
+</body>

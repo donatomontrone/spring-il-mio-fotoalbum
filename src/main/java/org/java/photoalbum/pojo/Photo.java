@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.validator.constraints.URL;
+import org.java.photoalbum.auth.pojo.User;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -14,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -47,18 +50,22 @@ public class Photo {
 	@ManyToMany
 	private List<Category> categories;
 	
+	@ManyToOne
+	@JsonBackReference
+	private User user;
 	
 	public Photo() {}
 	
-	public Photo(String title, String url, boolean visible, Category...categories) {
+	public Photo(String title, String url, boolean visible,User user, Category...categories) {
 		setTitle(title);
 		setUrl(url);
 		setVisible(visible);
+		setUser(user);
 		setCategories(categories);
 	}
 	
-	public Photo(String title, String url, boolean visible, String description, Category...categories) {
-		this(title, url, visible, categories);
+	public Photo(String title, String url, boolean visible, String description, User user, Category...categories) {
+		this(title, url, visible, user, categories);
 		setDescription(description);
 
 	}
@@ -119,6 +126,22 @@ public class Photo {
 	@JsonIgnore
 	public void setCategories(Category[] categories) {
 		setCategories(Arrays.asList(categories));
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public void addCategory(Category category) {
+		getCategories().add(category);
+	}
+	
+	public void removeCategory(Category category) {
+		getCategories().remove(category);
 	}
 
 	@Override

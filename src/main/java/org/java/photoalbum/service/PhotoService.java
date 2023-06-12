@@ -22,8 +22,16 @@ public class PhotoService {
 		return photoRepository.findById(id);
 	}
 	
-	public List<Photo> findByTitle(String title){
-		return photoRepository.findByTitleContaining(title);
+	public List<Photo> findByUsername(String username){
+		return photoRepository.findByUserUsername(username);
+	}
+	
+	public List<Photo> findByTitleAndUsername(String title, String username){
+		return photoRepository.findByTitleContainingAndUserUsername(title, username);
+	}
+	
+	public Optional<Photo> findByIdAndUsername(Integer id, String username){
+		return photoRepository.findByIdAndUserUsername(id, username);
 	}
 	
 	public Photo save(Photo photo) {

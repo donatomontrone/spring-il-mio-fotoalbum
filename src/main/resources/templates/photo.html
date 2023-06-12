@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+	<div th:replace="~{fragments/header :: header}"></div>
+	<main>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-10 col-md-8">
+					<div class="card my-3" th:object="${photo}">
+						<div class="row g-0">
+							<div class="col-12">
+								<div class="card-header text-end">
+									<!--  richiedendo l'ID della foto -->
+									<div class="buttons">
+
+										<a th:href="@{/admin/photos/edit/{id} (id=*{id})}"
+											class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i>
+											Edit</a> <a th:href="@{/admin/photos/delete/{id} (id=*{id})}"
+											class="btn btn-sm btn-danger"><i
+											class="fa-solid fa-trash"></i> Delete</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<img th:src="*{url}" class="img-fluid rounded-start"
+									th:alt="*{title}">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h4 class="card-title">[[*{title}]]</h4>
+									<p class="card-text">[[*{description}]]</p>
+									<p class="card-text">[[*{visible ? 'La foto è al momento visibile' : 'La foto non è visibile'}]]</p>
+									<small class="card-text">
+									 <span>Categorie: </span>
+									<span class="card-text fw-semibold" th:each="category, index : ${categories}" th:object="${category}"> [[*{name}]]<span th:unless="${index.last}">,</span>
+									</span>
+
+									</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<a th:href="@{/admin/photos}" class="btn btn-sm btn-secondary"><i
+							class="fa-solid fa-arrow-left"></i> Back</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>
