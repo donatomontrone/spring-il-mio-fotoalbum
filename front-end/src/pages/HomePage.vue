@@ -2,7 +2,7 @@
     <main>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-6">
+                <div class="col-8">
                     <h1 class="text-center mb-5 fw-bold title">Fatti <span style="color:#5A2FC7">incantare</span> da questi
                         <span style="color:#F84FCB">splendidi</span> scatti!</h1>
                 </div>

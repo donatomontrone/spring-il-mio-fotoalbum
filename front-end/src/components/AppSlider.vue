@@ -5,7 +5,7 @@
             <div class="col-12">
                 <carousel :autoplay="2000" :itemsToShow="1.5" :wrapAround="true" :pauseAutoplayOnHover="true"
                     :transition="1000">
-                    <slide v-for="photo in photos" :key="index">
+                    <slide v-for="photo, index in photos" :key="index">
                         <div class="carousel__item">
                             <img :src="photo.url" alt="" width="1000">
                         </div>
@@ -45,7 +45,6 @@ export default {
                 })
                 .then((response) => {
                     if (response.status = 200) {
-                        console.log(response.data)
                         if (response.data.length != 0) {
                             this.photos = response.data;
                         }
