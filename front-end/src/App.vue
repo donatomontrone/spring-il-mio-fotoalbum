@@ -7,20 +7,16 @@ export default {
   },
   data() {
     return {
-      searchText: '',
     }
   },
   methods: {
-    search(searchText) {
-      this.searchText = searchText;
-    }
   },
 }
 </script>
 
 <template>
-  <HeaderComponent @search="search()" />
-  <router-view :searchText="searchText"></router-view>
+  <HeaderComponent />
+  <router-view></router-view>
 </template>
 
 <style lang="scss">

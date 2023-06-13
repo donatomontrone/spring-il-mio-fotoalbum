@@ -1,5 +1,5 @@
 <template>
-    <div v-if="photo.visible" class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card border-0 image-container">
             <img :src="photo.url" :alt="photo.title" class="rounded-1 img-fluid">
             <div class="overlay text-white p-2">
@@ -41,7 +41,7 @@ export default {
 .image-container img {
     display: block;
     width: 100%;
-    height: auto;
+    min-height: 250px;
 }
 
 /* Aggiungi altri stili personalizzati come margini, dimensioni, ecc. */

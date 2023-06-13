@@ -32,8 +32,15 @@ public class PhotoApiController {
 			photos = photoService.findByTitle(title);	
 		}
 		
+		List<Photo> vPhotos = new ArrayList<>();
 		
-		return new ResponseEntity<>(photos,HttpStatus.OK);
+		for (Photo photo : photos) {
+			if (photo.isVisible()) {
+				vPhotos.add(photo);				
+			}
+		}
+ 		
+		return new ResponseEntity<>(vPhotos,HttpStatus.OK);
 	}
 	
 	

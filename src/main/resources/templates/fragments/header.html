@@ -9,10 +9,10 @@
 	<body>
 		<nav th:fragment="header">
 			<div class="container-fluid">
-				<div class="row align-items-center justify-content-center justify-content-md-between">
+				<div class="row align-items-center justify-content-center justify-content-md-between my-3">
 					<div class="col-md-6">
-						<a class="navbar-brand" th:href="@{/}">
-							<img th:src="@{/img/albums.svg}" alt="Logo" width="200" height="80">
+						<a class="navbar-brand" href="http://localhost:5173/">
+							<img th:src="@{/img/albums.svg}" alt="Logo" width="150">
 						</a>
 					</div>
 					<div sec:authorize="hasAnyAuthority('SUPERADMIN','ADMIN')" class="mb-4 mb-md-0 col-md-6">

@@ -82,22 +82,22 @@ public class PhotoAlbumApplication  implements CommandLineRunner{
 			categoryService.save(category);
 		}
 		
-//		FOTO
+//		FOTO"https://picsum.photos/id/1/1000/500"
 		List<Photo> photos = Arrays.asList(
-				new Photo("Gattino", "https://picsum.photos/200", true, users.get(0), categories.get(0)),
-				new Photo("Panda", "https://picsum.photos/200", true, "Un panda, immerso nella natura, che mangia foglie di bambu", users.get(0), categories.get(0)),
-				new Photo("Sconosciuta", "https://picsum.photos/200", false, "Ritratto di una sconosciuta", users.get(0), categories.get(1)),
-				new Photo("Brindisi", "https://picsum.photos/200", true, "Un brindisi al matrimonio del mio migliore amico", users.get(0), categories.get(1), categories.get(3)),
-				new Photo("Preparazione", "https://picsum.photos/200", true, users.get(0), categories.get(4)),
-				new Photo("Gareggiando", "https://picsum.photos/200", true, "Immortalando Alessia con il suo cavallo dopo aver gareggiato", users.get(0), categories.get(0), categories.get(1), categories.get(3)),
-				new Photo("Cascate", "https://picsum.photos/200", true, users.get(0), categories.get(2)),
-				new Photo("Gelato", "https://picsum.photos/200", false, "Il miglior gelato in circolazione!", users.get(0), categories.get(4)),
-				new Photo("Bosco", "https://picsum.photos/200", true, "Un edificio che si trasforma in bosco",  users.get(1), categories.get(2), categories.get(5)),
-				new Photo("Lezione", "https://picsum.photos/200", true, "Un meeting di archittetura", users.get(0), categories.get(1), categories.get(5), categories.get(3)),
-				new Photo("GP Monaco", "https://picsum.photos/200", true, "Durante il Gran Premio di Monaco", users.get(0), categories.get(1), categories.get(3)),
-				new Photo("Natura", "https://picsum.photos/200", false, "Immerso nella natura", users.get(1), categories.get(0), categories.get(2), categories.get(4)),
-				new Photo("Westminster", "https://picsum.photos/200", true, "Abbazzia di Westminster", users.get(1), categories.get(5)),
-				new Photo("Osservare", "https://picsum.photos/200", false, "Cercando le Torre Eiffel", users.get(1), categories.get(1), categories.get(5))
+				new Photo("New York", "https://picsum.photos/id/299/1000/500", true, "Vista dell'Empire State Building", users.get(0), categories.get(5)),
+				new Photo("Pecore", "https://picsum.photos/id/699/1000/500", true, "Pecore al pascolo", users.get(0), categories.get(0), categories.get(1), categories.get(2)),
+				new Photo("Sunset girl", "https://picsum.photos/id/399/1000/500", false, "Ritratto di una sconosciuta al tramonto", users.get(1),categories.get(2), categories.get(1)),
+				new Photo("Mangiando", "https://picsum.photos/id/395/1000/500", true, "Ho scoperto i miglior caffè di Manhattan", users.get(0), categories.get(1), categories.get(4)),
+				new Photo("Aquila Reale", "https://picsum.photos/id/538/1000/500", true, users.get(0), categories.get(0), categories.get(2)),
+				new Photo("Spring Break", "https://picsum.photos/id/449/1000/500", true, "Estauste dopo la festa sulla spiaggia dello Spring Break", users.get(0), categories.get(1), categories.get(2), categories.get(3)),
+				new Photo("Cascate", "https://picsum.photos/id/573/1000/500", true, users.get(0), categories.get(2)),
+				new Photo("More", "https://picsum.photos/id/429/1000/500", false, users.get(0), categories.get(4)),
+				new Photo("Cupo", "https://picsum.photos/id/719/1000/500", true, "Un chiesa immersa nella natura",  users.get(1), categories.get(2), categories.get(5)),
+				new Photo("Capodanno", "https://picsum.photos/id/407/1000/500", true, users.get(1), categories.get(3), categories.get(1)),
+				new Photo("Surf Week", "https://picsum.photos/id/643/1000/500", true, "Fine della Surf Week 2023", users.get(0), categories.get(2), categories.get(3)),
+				new Photo("Alla ricerca del cibo", "https://picsum.photos/id/611/1000/500", false, users.get(1), categories.get(0), categories.get(2), categories.get(4)),
+				new Photo("Best friends", "https://picsum.photos/id/494/1000/500", true, "Alessio con il suo cane", users.get(1), categories.get(0), categories.get(1)),
+				new Photo("Osservare", "https://picsum.photos/id/338/1000/500", false, "Osservando e passeggiando sulla spiaggia", users.get(1), categories.get(2), categories.get(1))
 				);
 		
 		for (Photo photo : photos) {
