@@ -62,6 +62,8 @@ public class PhotoController {
 	
 	
 	
+	
+	
 	@GetMapping("/{id}")
 	public String show(Model model, @PathVariable("id") Integer id, Authentication authentication) {
 		String username = authentication.getName();
@@ -152,4 +154,5 @@ public class PhotoController {
 		
 		return "redirect:/admin/photos";
 	}
+	
 }

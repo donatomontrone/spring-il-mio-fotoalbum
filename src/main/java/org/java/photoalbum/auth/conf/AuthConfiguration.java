@@ -20,8 +20,8 @@ public class AuthConfiguration {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		return http.csrf(c-> c.disable())
 				.authorizeHttpRequests( a -> a
+				.requestMatchers("/sadmin/**").hasAuthority("SUPERADMIN")
 				.requestMatchers("/admin/**").hasAuthority("ADMIN")
-				.requestMatchers("/superadmin/**").hasAuthority("SUPERADMIN")
 				.requestMatchers("/**").permitAll()
 				).formLogin(f -> f.permitAll()
 				).logout(l -> l.logoutSuccessUrl("/login")

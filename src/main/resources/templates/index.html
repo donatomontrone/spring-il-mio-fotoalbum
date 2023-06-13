@@ -24,9 +24,9 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 text-end">
-					<a th:href="@{photos/create}" class="btn btn-sm btn-success"><i
+					<a  sec:authorize="hasAuthority('ADMIN')"  th:href="@{photos/create}" class="btn btn-sm btn-success"><i
 						class="fa-solid fa-plus"></i> Aggiungi</a>
-					<a th:href="@{/admin/categories}" class="btn btn-sm btn-dark">Lista categorie</a>
+					<a  sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/categories}" class="btn btn-sm btn-dark">Lista categorie</a>
 				</div>
 				<table class="table">
 					<thead>
@@ -58,13 +58,23 @@
 									class="d-inline-block">
 								</a>
 							</td>
-							<td>[[${photo.visible ? 'Visibile' : 'Non visibile'}]]</td>
+							<td sec:authorize="hasAuthority('ADMIN')">
+								[[${photo.visible ? 'Visibile' : 'Non visibile'}]]
+							</td>
+							<td sec:authorize="hasAuthority('SUPERADMIN')">
+								<form  th:action="@{/sadmin/photos/{id}/visible (id=*{id})}" method="POST" class="d-flex flex-column align-items-center">
+									<button class="btn btn-outline-secondary">
+										<i th:unless="*{visible}" class="fa-regular fa-eye"></i>
+										<i th:if="*{visible}" class="fa-regular fa-eye-slash"></i>
+									</button>
+								</form>
+							</td>
 							<td><a th:href="@{photos/{id} (id=*{id})}"
 								class="btn btn-sm btn-primary" ><i
 									class="fa-solid fa-circle-info"></i></a>
-									 <a th:href="@{photos/edit/{id} (id=*{id})}"
+									 <a sec:authorize="hasAuthority('ADMIN')" th:href="@{photos/edit/{id} (id=*{id})}"
 								class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i></a>
-								<a th:href="@{photos/delete/{id} (id=*{id})}"
+								<a  sec:authorize="hasAuthority('ADMIN')" th:href="@{photos/delete/{id} (id=*{id})}"
 								class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a></td>
 						</tr>
 						<tr th:unless="${photos.size() > 0}">

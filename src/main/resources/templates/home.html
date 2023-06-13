@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+	<header>
+				<th:block th:replace="~{fragments/header :: header}">
+		</th:block>
+	</header>
+
+	<main>
+		<section class="position-relative">
+			<img alt="hero" th:src="@{/img/polaroid.png}" class="img-fluid"
+				style="filter: blur(3px);">
+			<div th:unless="${authentication != null}" class="text-center"
+				style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+				<div class="toast d-block">
+					<div class="toast-header">
+						<img th:src="@{/img/logo.svg}" class="rounded me-2" alt="logo"
+							width="20"> <strong class="me-auto">Albums</strong> <small><a
+							class="text-reset" th:href="@{/login}">Login</a></small>
+					</div>
+					<div class="toast-body">
+						Effettua il <a class="fw-semibold text-reset" th:href="@{/login}">Login</a>
+						per la gestire la tua area privata
+					</div>
+				</div>
+			</div>
+			<div th:IF="${authentication != null}" class="text-center"
+				style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+				<div class="toast d-block">
+					<div class="toast-header">
+						<img th:src="@{/img/logo.svg}" class="rounded me-2" alt="logo"
+							width="20"> <strong class="me-auto">Albums</strong> <small>Welcome</small>
+					</div>
+					<div class="toast-body">
+						Ciao [[${{authentication.getName}}]], benvenuto nella albums.Community!
+				<a th:href="@{/admin/photos}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-dark"><i class="fa-solid fa-camera"></i> Foto personali</a>
+				<a th:href="@{/sadmin/photos}" sec:authorize="hasAuthority('SUPERADMIN')" class="btn btn-dark"><i class="fa-solid fa-camera"></i> Gestisci foto</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h1 th:if="${{authentication != null }}">
+					Ciao [[${{authentication.getName}}]], benvenuto nella albums.Community!
+					</h1>			
+				</div>
+				<div class="col-3">
+				</div>
+			
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

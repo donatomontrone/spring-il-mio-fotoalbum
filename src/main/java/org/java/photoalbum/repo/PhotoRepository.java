@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PhotoRepository extends JpaRepository<Photo, Integer>{
 
 	List<Photo> findByUserUsername(String username);
+	
+	List<Photo> findByTitleContaining(String title);
 
 	List<Photo> findByTitleContainingAndUserUsername(String title, String username);
 	
